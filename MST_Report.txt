@@ -1,0 +1,67 @@
+Assignment 3
+
+Abstract
+This report presents an implementation and comparative analysis of Prim’s and Kruskal’s algorithms for optimizing a city transportation network. The primary objective was to identify the minimum set of roads connecting all city districts at the lowest possible construction cost. Using input data represented as a weighted undirected graph, both algorithms were applied to determine the Minimum Spanning Tree (MST). The performance of each algorithm was evaluated in terms of total construction cost, execution time, and operational efficiency. Results demonstrate that both algorithms yield identical total costs but differ slightly in execution performance depending on graph characteristics.
+
+1. Introduction
+Efficient transportation network planning is essential for minimizing infrastructure costs while ensuring full connectivity between urban districts. The Minimum Spanning Tree (MST) problem provides an effective mathematical model for this purpose. The MST ensures all vertices (districts) are connected with the minimal possible sum of edge weights (road construction costs).
+
+In this study, Prim’s and Kruskal’s algorithms were implemented and compared. Both algorithms are widely used for MST generation but differ in their operational mechanisms. Prim’s algorithm grows the MST by adding the least costly edge from an already connected vertex, while Kruskal’s algorithm builds the MST by continuously selecting the lowest-weight edge that does not form a cycle.
+
+2. Methodology
+2.1 Data Representation
+The transportation network was modeled as a weighted undirected graph.
+- Vertices represent city districts.
+- Edges represent possible road connections.
+- Weights correspond to the cost of constructing each road.
+
+The input data was provided in JSON format, containing two separate graphs for analysis. Each graph specified nodes and edges with corresponding weights.
+
+2.2 Algorithms Implemented
+Prim’s Algorithm:
+Starts with an arbitrary vertex and expands the MST by repeatedly adding the lowest-cost edge that connects a new vertex to the existing tree.
+
+Kruskal’s Algorithm:
+Sorts all edges in non-decreasing order of weight and adds edges to the MST as long as they do not form a cycle. A Disjoint Set Union (DSU) data structure was used for efficient cycle detection.
+
+2.3 Performance Metrics
+Each algorithm was evaluated based on the following criteria:
+1. Total MST Cost: The sum of weights of all selected edges.
+2. Execution Time (ms): The total computational time measured in milliseconds.
+3. Number of Operations: Key algorithmic actions (comparisons, unions, and selections).
+
+3. Experimental Results
+Graph ID | Prim Total Cost | Kruskal Total Cost | Prim Time (ms) | Kruskal Time (ms)
+1        | 16.0             | 16.0               | 2               | 1
+2        | 6.0              | 6.0                | 0               | 0
+
+Both algorithms produced identical MST total costs for each graph, confirming correctness. However, Kruskal’s algorithm showed marginally better execution times in Graph 1, while both performed equally efficiently on the smaller Graph 2.
+
+4. Analysis and Discussion
+The observed results confirm that both algorithms guarantee the same MST cost, as expected from their theoretical equivalence. However, differences in execution time are influenced by graph structure and density:
+
+- Prim’s Algorithm tends to perform better on dense graphs because it incrementally expands a connected tree, utilizing a priority queue to efficiently select minimum edges.
+- Kruskal’s Algorithm performs efficiently on sparse graphs, where edge sorting and union–find operations dominate computational cost but are manageable due to fewer edges.
+
+In this case, both graphs were relatively small; thus, the differences in performance were minimal. On larger graphs, the algorithmic complexity would play a more significant role:
+- Prim’s complexity: O(E log V) using a binary heap.
+- Kruskal’s complexity: O(E log E) due to edge sorting.
+
+Kruskal’s simplicity and edge-based approach make it particularly suitable for disconnected or sparse networks, while Prim’s algorithm is often preferred for connected and dense city networks.
+
+5. Conclusion
+Both Prim’s and Kruskal’s algorithms successfully computed the Minimum Spanning Tree for the given transportation network data, ensuring optimal connectivity at the lowest construction cost.
+
+The experimental results demonstrate that:
+- Both algorithms yield identical MST total costs.
+- Kruskal’s algorithm exhibited slightly faster execution for the tested graphs.
+- The choice of algorithm should depend on graph density:
+  - Prim’s algorithm is preferable for dense or adjacency-matrix-based graphs.
+  - Kruskal’s algorithm is preferable for sparse graphs or edge list representations.
+zzz
+Ultimately, both algorithms are reliable and efficient tools for real-world city infrastructure optimization problems.
+
+6. References
+1. Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2022). Introduction to Algorithms (4th ed.). MIT Press.
+2. GeeksforGeeks. “Prim’s and Kruskal’s Algorithm for Minimum Spanning Tree.” Retrieved from https://www.geeksforgeeks.org
+3. CLRS Online Resources — Minimum Spanning Tree Concepts and Implementations.

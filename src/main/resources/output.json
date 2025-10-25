@@ -1,0 +1,13 @@
+[ {
+  "graphId" : 1,
+  "primTotalCost" : 16.0,
+  "kruskalTotalCost" : 16.0,
+  "primTimeMs" : 2,
+  "kruskalTimeMs" : 1
+}, {
+  "graphId" : 2,
+  "primTotalCost" : 6.0,
+  "kruskalTotalCost" : 6.0,
+  "primTimeMs" : 0,
+  "kruskalTimeMs" : 0
+} ]
